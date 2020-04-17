@@ -48,11 +48,7 @@ def main():
                                              phase_train=phase_train_placeholder,
                                              bottleneck_layer_size=config.embedding_size,
                                              weight_decay=config.weight_decay)
-            # prelogits, _ = network.inference(inp,
-            #                                  1.0,
-            #                                  False,
-            #                                  bottleneck_layer_size=config.embedding_size,
-            #                                  weight_decay=config.weight_decay)
+           
             prelogits = tf.maximum(prelogits, -1e27)
 
         g = tf.get_default_graph()
