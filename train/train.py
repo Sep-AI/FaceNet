@@ -81,11 +81,11 @@ def main():
                                           phase_train=phase_train_placeholder,
                                           bottleneck_layer_size=config.embedding_size,
                                           weight_decay=config.weight_decay)
-        # g = tf.get_default_graph()
-        # tf.contrib.quantize.create_training_graph(input_graph=g,quant_delay=0)
-        # sess = tf.Session()
-        # all_variables = tf.get_collection_ref(tf.GraphKeys.GLOBAL_VARIABLES)
-        # sess.run(tf.variables_initializer(all_variables))
+            
+        '''Adding fake quantization layer'''    
+        g = tf.get_default_graph()
+        tf.contrib.quantize.create_training_graph(input_graph=g,quant_delay=0)
+       
 
         #loss
         logits=slim.fully_connected(prelogits,len(train_set),activation_fn=None,
